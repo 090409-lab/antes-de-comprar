@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Antes de Comprar — Consumo Consciente</title>
+<style>
+:root{
+  --bg:#f5f7f2; --card:#ffffff; --ink:#24312c; --muted:#66736d;
+  --primary:#356859; --primary2:#4f8a76; --soft:#e4eee8;
+  --accent:#d8a85b; --line:#dce5df; --danger:#9b5b55;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+a{text-decoration:none;color:inherit}
+.container{width:min(1120px,92%);margin:auto}
+header{position:sticky;top:0;z-index:10;background:rgba(245,247,242,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-weight:800;font-size:1.15rem;color:var(--primary)}
+.logo span{color:var(--accent)}
+nav{display:flex;gap:20px;flex-wrap:wrap;font-size:.94rem;color:var(--muted)}
+nav a:hover{color:var(--primary)}
+.hero{padding:92px 0 76px;background:linear-gradient(135deg,#e9f1ec,#f7f2e8)}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:55px;align-items:center}
+.badge{display:inline-block;background:var(--soft);color:var(--primary);padding:7px 13px;border-radius:999px;font-size:.82rem;font-weight:700;margin-bottom:18px}
+h1{font-size:clamp(2.5rem,5vw,4.7rem);line-height:1.04;letter-spacing:-2px;margin-bottom:20px}
+.hero h1 span{color:var(--primary)}
+.hero p{font-size:1.15rem;color:var(--muted);max-width:650px;margin-bottom:28px}
+.buttons{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 20px;border-radius:12px;font-weight:700;border:1px solid transparent;cursor:pointer}
+.btn-primary{background:var(--primary);color:white}
+.btn-secondary{border-color:var(--line);background:white}
+.btn:hover{transform:translateY(-1px)}
+.hero-card{background:white;border:1px solid var(--line);border-radius:24px;padding:30px;box-shadow:0 15px 45px rgba(45,65,55,.08)}
+.hero-card .circle{width:68px;height:68px;border-radius:50%;background:var(--soft);display:grid;place-items:center;font-size:1.8rem;margin-bottom:20px}
+.hero-card h3{font-size:1.35rem;margin-bottom:9px}
+.hero-card p{font-size:.98rem;margin:0}
+section{padding:76px 0}
+.section-head{max-width:720px;margin-bottom:34px}
+.eyebrow{font-size:.78rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--primary2);font-weight:800;margin-bottom:8px}
+h2{font-size:clamp(1.9rem,3vw,2.7rem);line-height:1.15;margin-bottom:12px}
+.section-head p{color:var(--muted)}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px}
+.card h3{margin:10px 0 8px}
+.card p{color:var(--muted)}
+.icon{font-size:1.7rem}
+.steps{counter-reset:step}
+.step{position:relative;padding-left:65px}
+.step:before{counter-increment:step;content:counter(step);position:absolute;left:0;top:2px;width:42px;height:42px;border-radius:50%;background:var(--soft);color:var(--primary);display:grid;place-items:center;font-weight:800}
+.soft-section{background:#e9f1ec}
+.quiz{max-width:780px;background:white;border:1px solid var(--line);border-radius:22px;padding:30px}
+.progress{height:8px;background:#edf1ee;border-radius:99px;overflow:hidden;margin:16px 0 26px}
+.progress div{height:100%;width:0;background:var(--primary);transition:.3s}
+.question{font-size:1.25rem;font-weight:700;margin-bottom:18px}
+.options{display:grid;gap:10px}
+.option{padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:white;text-align:left;cursor:pointer;font-size:1rem}
+.option:hover{border-color:var(--primary2);background:#f7faf8}
+.option.selected{background:var(--soft);border-color:var(--primary)}
+.quiz-result{display:none;padding:20px;border-radius:14px;background:var(--soft);margin-top:20px}
+.notice{background:#fff8ea;border-left:4px solid var(--accent);padding:18px;border-radius:10px;color:#5e513e}
+.callout{background:var(--primary);color:white;border-radius:24px;padding:38px}
+.callout p{color:#e8f2ed;margin:10px 0 22px}
+.callout .btn{background:white;color:var(--primary)}
+footer{background:#24312c;color:#dce7e1;padding:45px 0}
+footer p{color:#afc0b7;font-size:.9rem}
+footer .logo{color:white;margin-bottom:10px;display:block}
+.small{font-size:.88rem;color:var(--muted)}
+@media(max-width:800px){
+  .hero-grid,.grid-3,.grid-2{grid-template-columns:1fr}
+  nav{display:none}
+  .hero{padding-top:65px}
+  h1{letter-spacing:-1px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="logo" href="#inicio">Antes de <span>Comprar</span></a>
+    <nav>
+      <a href="#problema">O problema</a>
+      <a href="#solucao">A solução</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#acolhimento">Acolhimento</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="container hero-grid">
+    <div>
+      <span class="badge">Consumo consciente • Educação • Acolhimento</span>
+      <h1>Antes de comprar,<br><span>pare e pense.</span></h1>
+      <p>Um projeto para ajudar pessoas a entenderem o consumismo, reconhecerem compras por impulso e encontrarem formas mais conscientes de se relacionar com o dinheiro e com o consumo.</p>
+      <div class="buttons">
+        <a class="btn btn-primary" href="#quiz">Fazer o mini questionário</a>
+        <a class="btn btn-secondary" href="#solucao">Conhecer a solução</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="circle">💭</div>
+      <h3>Você não precisa se culpar.</h3>
+      <p>Ser influenciado por publicidade, redes sociais ou pela vontade de comprar não faz de você uma pessoa ruim. O primeiro passo é entender o que está por trás desse impulso e aprender a fazer escolhas com mais calma.</p>
+    </div>
+  </div>
+</section>
+
+<section id="problema">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Entender é o primeiro passo</div>
+      <h2>O que é o consumismo?</h2>
+      <p>Consumir faz parte da vida. O problema aparece quando comprar deixa de responder a uma necessidade e passa a acontecer de forma excessiva, impulsiva ou motivada por pressão, status e influência.</p>
+    </div>
+    <div class="grid-3">
+      <article class="card"><div class="icon">📱</div><h3>Influência digital</h3><p>Redes sociais e influenciadores podem criar a sensação de que precisamos acompanhar tendências e estilos de vida que não correspondem à nossa realidade.</p></article>
+      <article class="card"><div class="icon">🛍️</div><h3>Compra por impulso</h3><p>Uma compra pode acontecer pela emoção do momento, sem uma reflexão sobre necessidade, utilidade ou capacidade de pagamento.</p></article>
+      <article class="card"><div class="icon">🌎</div><h3>Consequências</h3><p>O excesso pode trazer impactos financeiros, sociais e ambientais, como endividamento, desperdício, descarte excessivo e pressão social.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="soft-section" id="solucao">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Nossa proposta</div>
+      <h2>Uma solução simples, acessível e humana</h2>
+      <p>A campanha combina informação, educação e acolhimento. A intenção não é proibir o consumo, mas ajudar cada pessoa a perceber quando uma compra realmente faz sentido.</p>
+    </div>
+    <div class="grid-2">
+      <article class="card step"><h3>Informação pelo site</h3><p>Textos, explicações e exemplos mostram por que compras impulsivas podem ser prejudiciais e como o consumismo afeta a vida financeira, social e o meio ambiente.</p></article>
+      <article class="card step"><h3>Escolas públicas</h3><p>Aulas, debates, oficinas e atividades sobre educação financeira, publicidade, redes sociais e consumo consciente aproximam o tema da realidade dos estudantes.</p></article>
+      <article class="card step"><h3>ONGs, palestras e seminários</h3><p>Parcerias ampliam o alcance da proposta e permitem oferecer ações educativas gratuitas para diferentes comunidades.</p></article>
+      <article class="card step"><h3>Campanha nas redes</h3><p>Vídeos, posts e conteúdos curtos levam a mensagem para mais pessoas e ajudam a combater a ideia de que comprar sempre significa ter sucesso ou felicidade.</p></article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">O caminho básico</div>
+      <h2>Como a pessoa entra em contato com o projeto?</h2>
+    </div>
+    <div class="grid-3">
+      <article class="card"><div class="icon">1️⃣</div><h3>Descobre</h3><p>Encontra o projeto na escola, em uma ONG, palestra, seminário, apresentação ou pela internet.</p></article>
+      <article class="card"><div class="icon">2️⃣</div><h3>Entende</h3><p>Acessa conteúdos simples sobre consumismo, influência, compras por impulso e suas consequências.</p></article>
+      <article class="card"><div class="icon">3️⃣</div><h3>Reflete</h3><p>Responde ao questionário e começa a observar seus próprios hábitos antes de realizar uma compra.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="quiz" class="soft-section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Interativo</div>
+      <h2>Antes de comprar, pense</h2>
+      <p>Este mini questionário não é um diagnóstico. Ele serve apenas para estimular a reflexão sobre hábitos de consumo.</p>
+    </div>
+    <div class="quiz">
+      <div id="counter">Pergunta 1 de 4</div>
+      <div class="progress"><div id="bar"></div></div>
+      <div class="question" id="question"></div>
+      <div class="options" id="options"></div>
+      <div class="quiz-result" id="result"></div>
+      <button class="btn btn-secondary" id="restart" style="display:none;margin-top:16px">Refazer questionário</button>
+    </div>
+  </div>
+</section>
+
+<section id="acolhimento">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Você não está sozinho</div>
+      <h2>Um espaço de acolhimento, não de julgamento</h2>
+      <p>O objetivo é conscientizar sem culpar. Algumas pessoas podem ter mais dificuldade para controlar compras, especialmente quando o consumo está ligado a emoções, ansiedade, pressão social ou outras questões pessoais.</p>
+    </div>
+    <div class="grid-2">
+      <article class="card">
+        <h3>Se isso acontece com você</h3>
+        <p>Comece com pequenos passos: observe o que sente antes de comprar, espere um pouco antes de finalizar uma compra e converse com alguém de confiança. Pedir ajuda também é uma forma de cuidado.</p>
+      </article>
+      <article class="card">
+        <h3>Quando buscar apoio</h3>
+        <p>Se o consumo estiver causando sofrimento, conflitos ou dificuldades financeiras importantes, procure serviços e profissionais qualificados, como psicólogos e assistentes sociais.</p>
+      </article>
+    </div>
+    <div class="notice" style="margin-top:22px">
+      <strong>Importante:</strong> este site é educativo e não substitui atendimento psicológico, médico, financeiro ou social profissional.
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="callout">
+      <h2>Pequenas escolhas também fazem diferença.</h2>
+      <p>Antes de comprar, pergunte: eu preciso disso? Posso pagar? Já tenho algo parecido? Estou comprando por necessidade ou por influência?</p>
+      <a class="btn" href="#quiz">Quero refletir</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Próximos passos</div>
+      <h2>O que é essencial e o que pode vir depois?</h2>
+    </div>
+    <div class="grid-3">
+      <article class="card"><h3>Indispensável</h3><p>Site educativo, informações claras, ações em escolas, ONGs, palestras e seminários, além do questionário interativo.</p></article>
+      <article class="card"><h3>Melhora a experiência</h3><p>Maior visibilidade, investimento em marketing, mais recursos para o projeto e apoio a ONGs que atuam nessa área.</p></article>
+      <article class="card"><h3>Pode ficar para depois</h3><p>O aplicativo é uma possibilidade futura. A campanha consegue demonstrar sua proposta sem depender dele.</p></article>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <span class="logo">Antes de Comprar</span>
+    <p>Projeto educativo de conscientização sobre consumismo, compras por impulso e consumo consciente.</p>
+    <p style="margin-top:14px"><strong>Projeto desenvolvido por:</strong> Pedro G. Pacheco, Felipe C. Leal, Cristiano R. R. De Souza, Antônio Gabriel e Carlos Eduardo.</p>
+    <p style="margin-top:10px">A tecnologia pode ajudar, mas a conscientização vem primeiro.</p>
+  </div>
+</footer>
+
+<script>
+const questions = [
+ {q:"Você compra coisas por influência das redes sociais?",o:["Frequentemente","Às vezes","Raramente","Nunca"]},
+ {q:"Quando encontra um produto que deseja, você costuma pesquisar antes de comprar?",o:["Sempre","Na maioria das vezes","Poucas vezes","Nunca"]},
+ {q:"Você já comprou algo e depois percebeu que não precisava?",o:["Muitas vezes","Algumas vezes","Raramente","Nunca"]},
+ {q:"Antes de comprar, você costuma perguntar se realmente precisa daquele produto?",o:["Sempre","Às vezes","Raramente","Nunca"]}
+];
+let current=0, answers=[];
+const qEl=document.getElementById("question"), oEl=document.getElementById("options");
+const cEl=document.getElementById("counter"), bar=document.getElementById("bar");
+const result=document.getElementById("result"), restart=document.getElementById("restart");
+
+function render(){
+  const item=questions[current];
+  cEl.textContent=`Pergunta ${current+1} de ${questions.length}`;
+  bar.style.width=((current)/questions.length*100)+"%";
+  qEl.textContent=item.q; oEl.innerHTML="";
+  item.o.forEach((opt,i)=>{
+    const b=document.createElement("button"); b.className="option"; b.textContent=opt;
+    b.onclick=()=>select(i); oEl.appendChild(b);
+  });
+}
+function select(i){
+  answers.push(i);
+  if(current<questions.length-1){current++;render();}
+  else finish();
+}
+function finish(){
+  bar.style.width="100%"; qEl.textContent="Obrigado por refletir sobre seus hábitos.";
+  oEl.innerHTML="";
+  const score=answers.reduce((a,b)=>a+b,0);
+  let msg;
+  if(score<=3) msg="Você parece refletir bastante antes de comprar. Continue valorizando escolhas conscientes.";
+  else if(score<=7) msg="Você já demonstra alguns hábitos de reflexão. Pequenas mudanças podem ajudar a reduzir compras por impulso.";
+  else msg="Talvez seja interessante observar com mais atenção o que desperta sua vontade de comprar e experimentar uma pausa antes de finalizar.";
+  result.style.display="block"; result.textContent=msg+" Este resultado é apenas educativo e não representa um diagnóstico.";
+  restart.style.display="inline-block";
+}
+restart.onclick=()=>{current=0;answers=[];result.style.display="none";restart.style.display="none";render();}
+render();
+</script>
+</body>
+</html>
